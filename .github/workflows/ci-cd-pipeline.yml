@@ -26,14 +26,15 @@ jobs:
       run: |
         pip install -r requirements.txt
 
-    - name: Run tests
+    - name: Install snyk CLI
       run: |
-        pytest
+        npm install -g snyk  # Install snyk CLI via npm
 
     - name: Run security tests with Snyk
-      uses: snyk/actions/python@master
-      with:
-        snyk_token: ${{ secrets.SNYK_TOKEN }}
+      run: |
+        snyk test  # Run snyk tests using the installed CLI
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
     - name: Build Docker image
       run: |
