@@ -1,6 +1,6 @@
 name: CI/CD Pipeline
 
-# Trigger the pipeline on push or pull request to main branch
+# Trigger the pipeline on push or pull request to the main branch
 on:
   push:
     branches:
@@ -17,10 +17,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up Python 3.8
+    - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
-        python-version: '3.8'
+        python-version: '3.9'
 
     - name: Install dependencies
       run: |
